@@ -7,6 +7,7 @@ public class ResultDto {
     public ResultDto(double result) {
         this.result = result;
     }
+
     public double getDouble() {
         return result;
     }

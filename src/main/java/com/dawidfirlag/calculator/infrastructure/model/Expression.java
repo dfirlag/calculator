@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class Expression {
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     private String expression;
     private String result;
     private String created;
@@ -22,11 +22,11 @@ public class Expression {
         this.setCreated(Timestamp.valueOf(LocalDateTime.now()).toString());
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

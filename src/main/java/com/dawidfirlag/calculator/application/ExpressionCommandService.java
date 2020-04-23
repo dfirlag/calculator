@@ -19,13 +19,18 @@ public class ExpressionCommandService {
     private ExpressionCrudRepository expressionCrudRepository;
 
     @Transactional
-    public void saveExpression(String expression)
+    public Expression saveExpression(String expression)
         throws InvalidExpressionException, DividedByZeroException
     {
         ResultDto result = calculatorQueryService.calculateExpressionFromString(expression);
         Expression expressionModel = new Expression();
         expressionModel.setExpression(expression);
         expressionModel.setResult(Double.toString(result.getDouble()));
-        expressionCrudRepository.save(expressionModel);
+        return expressionCrudRepository.save(expressionModel);
+    }
+
+    @Transactional
+    public void deleteExpression(Long id) {
+        expressionCrudRepository.deleteById(id);
     }
 }
