@@ -6,6 +6,7 @@ import com.dawidfirlag.calculator.domain.interpreter.exception.DividedByZeroExce
 import com.dawidfirlag.calculator.domain.parser.exceptions.InvalidExpressionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,7 +20,7 @@ public class CalculatorQueryController {
     @Autowired
     private CalculatorQueryService calculatorQueryService;
 
-    @GetMapping(path = "/calculator/get-calculated-expression")
+    @GetMapping(path = "/calculator/get-calculated-expression", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultDto getCalculatedExpression(@RequestParam String expression) {
         expression = URLDecoder.decode(expression, StandardCharsets.UTF_8);
 

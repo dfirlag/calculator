@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class CalculatorControllerTest {
+public class CalculatorQueryControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -27,7 +27,7 @@ public class CalculatorControllerTest {
     @Test
     public void testGetCalculatedExpressionShouldReturnJsonResult() throws Exception {
         String url = UriComponentsBuilder.newInstance()
-                .path("/get-calculated-expression")
+                .path("/calculator/get-calculated-expression")
                 .queryParam("expression", "1+2*(3-1)")
                 .build()
                 .toString();

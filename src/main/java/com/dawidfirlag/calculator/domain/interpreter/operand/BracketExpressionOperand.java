@@ -19,6 +19,6 @@ public class BracketExpressionOperand extends AbstractOperand {
 
     @Override
     public double getDoubleValue() {
-        throw new RuntimeException("Try to get double value from expression operand");
+        throw new RuntimeException("Try to get double value from bracket expression operand");
     }
 }

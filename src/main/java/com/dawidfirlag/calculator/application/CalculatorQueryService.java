@@ -8,9 +8,11 @@ import com.dawidfirlag.calculator.domain.parser.ParserInput;
 import com.dawidfirlag.calculator.domain.parser.exceptions.InvalidExpressionException;
 import com.dawidfirlag.calculator.domain.parser.parserInput.StreamParserInput;
 import com.dawidfirlag.calculator.domain.parser.parserInput.StringParserInput;
+import com.dawidfirlag.calculator.infrastructure.model.Expression;
 import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
+import java.util.List;
 
 @Service
 public class CalculatorQueryService {
