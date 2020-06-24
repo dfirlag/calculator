@@ -5,9 +5,14 @@ import com.dawidfirlag.calculator.domain.interpreter.exception.DividedByZeroExce
 public interface Instruction {
 
     OperatorsPriority getPriorityOperator();
+
     void updateLeftOperand(Operand leftOperand);
+
     void updateRightOperand(Operand rightOperand);
+
     Operand getLeftOperand();
+
     Operand getRightOperand();
+
     double calculate() throws DividedByZeroException;
 }

@@ -5,10 +5,11 @@ import com.dawidfirlag.calculator.domain.interpreter.exception.DividedByZeroExce
 import com.dawidfirlag.calculator.domain.interpreter.operand.BracketExpressionOperand;
 import com.dawidfirlag.calculator.domain.interpreter.operand.ValueOperand;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Interpreter {
-    
+
     private final LinkedList<Instruction> instructions;
     private double result;
 
@@ -51,8 +52,7 @@ public class Interpreter {
     }
 
     private void executeInstruction(Instruction instruction, ListIterator<Instruction> it)
-        throws DividedByZeroException
-    {
+        throws DividedByZeroException {
         double instructionResult = this.getCalculatedInstructionResult(instruction);
         it.remove();
 
@@ -72,13 +72,13 @@ public class Interpreter {
     private double getCalculatedInstructionResult(Instruction instruction) throws DividedByZeroException {
         if (instruction.getLeftOperand() instanceof BracketExpressionOperand) {
             instruction.updateLeftOperand(
-                    this.getResolvedExpressionOperand((BracketExpressionOperand) instruction.getLeftOperand())
+                this.getResolvedExpressionOperand((BracketExpressionOperand) instruction.getLeftOperand())
             );
         }
 
         if (instruction.getRightOperand() instanceof BracketExpressionOperand) {
             instruction.updateRightOperand(
-                    this.getResolvedExpressionOperand((BracketExpressionOperand) instruction.getRightOperand())
+                this.getResolvedExpressionOperand((BracketExpressionOperand) instruction.getRightOperand())
             );
         }
 

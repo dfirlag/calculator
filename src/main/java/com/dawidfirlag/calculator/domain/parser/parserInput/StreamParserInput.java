@@ -2,7 +2,7 @@ package com.dawidfirlag.calculator.domain.parser.parserInput;
 
 import com.dawidfirlag.calculator.domain.parser.ParserInput;
 
-import java.io.*;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 

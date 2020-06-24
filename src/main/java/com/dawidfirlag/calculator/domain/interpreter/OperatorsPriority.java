@@ -7,5 +7,6 @@ public enum OperatorsPriority {
     SUBTRACT(3),
     ADD(4);
 
-    OperatorsPriority(int priority) {}
+    OperatorsPriority(int priority) {
+    }
 }

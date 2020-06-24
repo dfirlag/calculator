@@ -16,15 +16,13 @@ import java.io.InputStream;
 public class CalculatorQueryService {
 
     public ResultDto calculateExpressionFromStringArray(String[] arg)
-        throws InvalidExpressionException, DividedByZeroException
-    {
+        throws InvalidExpressionException, DividedByZeroException {
         String inputStr = String.join(" ", arg);
         return this.calculateExpressionFromString(inputStr);
     }
 
     public ResultDto calculateExpressionFromString(String inputStr)
-            throws InvalidExpressionException, DividedByZeroException
-    {
+        throws InvalidExpressionException, DividedByZeroException {
         Interpreter interpreter = new Interpreter();
         ParserInput parserInput = new StringParserInput(inputStr);
         Parser parser = new Parser(parserInput);
@@ -35,8 +33,7 @@ public class CalculatorQueryService {
     }
 
     public ResultDto calculateExpressionFromStream(InputStream inputStream)
-            throws InvalidExpressionException, DividedByZeroException
-    {
+        throws InvalidExpressionException, DividedByZeroException {
         Interpreter interpreter = new Interpreter();
         StreamParserInput parserInput = new StreamParserInput(inputStream);
         Parser parser = new Parser(parserInput);

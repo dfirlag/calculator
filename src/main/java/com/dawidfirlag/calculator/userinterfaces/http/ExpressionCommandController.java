@@ -14,20 +14,23 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/expression")
 public class ExpressionCommandController {
 
+    private final ExpressionCommandService expressionCommandService;
+
     @Autowired
-    ExpressionCommandService calculatorCommandService;
+    public ExpressionCommandController(ExpressionCommandService expressionCommandService) {
+        this.expressionCommandService = expressionCommandService;
+    }
 
     @PutMapping(value = "/save-expression", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public void saveExpression(@RequestBody ExpressionDto expression)
-        throws InvalidExpressionException, DividedByZeroException
-    {
-        this.calculatorCommandService.saveExpression(expression.getExpression());
+        throws InvalidExpressionException, DividedByZeroException {
+        this.expressionCommandService.saveExpression(expression.getExpression());
     }
 
     @DeleteMapping(value = "/delete-expression/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteExpression(@PathVariable("id") Long id){
-        this.calculatorCommandService.deleteExpression(id);
+    public void deleteExpression(@PathVariable("id") Long id) {
+        this.expressionCommandService.deleteExpression(id);
     }
 }

@@ -13,11 +13,15 @@ import java.util.stream.Collectors;
 @Service
 public class ExpressionQueryService {
 
+    private final ExpressionCrudRepository expressionCrudRepository;
+
     @Autowired
-    ExpressionCrudRepository expressionCrudRepository;
+    public ExpressionQueryService(ExpressionCrudRepository expressionCrudRepository) {
+        this.expressionCrudRepository = expressionCrudRepository;
+    }
 
     public ExpressionListDto getSavedExpressions() {
-        List<Expression> expressions =  expressionCrudRepository.findAll();
+        List<Expression> expressions = expressionCrudRepository.findAll();
         return new ExpressionListDto(
             expressions.size(),
             expressions

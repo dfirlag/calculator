@@ -28,17 +28,15 @@ public class Parser {
     }
 
     public void parseInput(
-            LinkedList<Instruction> instructions
-    ) throws InvalidExpressionException
-    {
+        LinkedList<Instruction> instructions
+    ) throws InvalidExpressionException {
         this.parseStringInput(parserInput.getInputString(), instructions);
     }
 
     protected void parseStringInput(
-            String inputString,
-            LinkedList<Instruction> instructions
-    ) throws InvalidExpressionException
-    {
+        String inputString,
+        LinkedList<Instruction> instructions
+    ) throws InvalidExpressionException {
         inputString = this.prepareStringToParse(inputString);
         if (inputString.isEmpty()) {
             throw new InvalidExpressionException("Expression in empty");
@@ -60,9 +58,9 @@ public class Parser {
                 rightOperand = this.getNextOperand(scanner);
 
                 Instruction instruction = this.instructionFactory.createInstructionByString(
-                        operator,
-                        leftOperand,
-                        rightOperand
+                    operator,
+                    leftOperand,
+                    rightOperand
                 );
 
                 instructions.add(instruction);

@@ -12,16 +12,22 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ExpressionCommandService {
 
-    @Autowired
-    private CalculatorQueryService calculatorQueryService;
+    private final CalculatorQueryService calculatorQueryService;
+
+    private final ExpressionCrudRepository expressionCrudRepository;
 
     @Autowired
-    private ExpressionCrudRepository expressionCrudRepository;
+    public ExpressionCommandService(
+        CalculatorQueryService calculatorQueryService,
+        ExpressionCrudRepository expressionCrudRepository
+    ) {
+        this.calculatorQueryService = calculatorQueryService;
+        this.expressionCrudRepository = expressionCrudRepository;
+    }
 
     @Transactional
     public Expression saveExpression(String expression)
-        throws InvalidExpressionException, DividedByZeroException
-    {
+        throws InvalidExpressionException, DividedByZeroException {
         ResultDto result = calculatorQueryService.calculateExpressionFromString(expression);
         Expression expressionModel = new Expression();
         expressionModel.setExpression(expression);

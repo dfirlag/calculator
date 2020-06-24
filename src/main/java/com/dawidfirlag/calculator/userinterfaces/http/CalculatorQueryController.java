@@ -16,13 +16,16 @@ import java.nio.charset.StandardCharsets;
 @RequestMapping(path = "/calculator")
 public class CalculatorQueryController {
 
+    private final CalculatorQueryService calculatorQueryService;
+
     @Autowired
-    private CalculatorQueryService calculatorQueryService;
+    public CalculatorQueryController(CalculatorQueryService calculatorQueryService) {
+        this.calculatorQueryService = calculatorQueryService;
+    }
 
     @GetMapping(path = "/get-calculated-expression", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResultDto getCalculatedExpression(@RequestParam String expression)
-        throws InvalidExpressionException, DividedByZeroException
-    {
+        throws InvalidExpressionException, DividedByZeroException {
         return this.calculatorQueryService.calculateExpressionFromString(
             URLDecoder.decode(expression, StandardCharsets.UTF_8)
         );
