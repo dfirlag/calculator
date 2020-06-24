@@ -1,3 +1,8 @@
+Install dependency
+```
+mvn install
+```
+
 Start project:
 ```
 mvn spring-boot:run
