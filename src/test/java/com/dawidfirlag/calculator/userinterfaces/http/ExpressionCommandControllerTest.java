@@ -17,8 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -54,7 +53,7 @@ public class ExpressionCommandControllerTest {
         ExpressionDto expressionDto = new ExpressionDto(expression);
 
         this.mockMvc.perform(
-            put("/expression/save-expression")
+            post("/expression/save-expression")
             .content(this.objectMapper.writeValueAsBytes(expressionDto))
             .contentType(MediaType.APPLICATION_JSON_VALUE)
         )

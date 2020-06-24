@@ -21,7 +21,7 @@ public class ExpressionCommandController {
         this.expressionCommandService = expressionCommandService;
     }
 
-    @PutMapping(value = "/save-expression", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/save-expression", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public void saveExpression(@RequestBody ExpressionDto expression)
         throws InvalidExpressionException, DividedByZeroException {
